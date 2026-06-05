@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈️ Roteiro Europa 2026 - FINAL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6C5CE7;
+            --accent: #FF6B8A;
+            --success: #00B894;
+            --warning: #FDCB6E;
+            --dark: #2D3436;
+            --light: #F5F6FA;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2D3436;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: white;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            letter-spacing: 2px;
+        }
+
+        .update-badge {
+            display: inline-block;
+            background: rgba(0, 184, 148, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FDCB6E;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+
+        .city-card {
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .city-card:nth-child(1) { animation-delay: 0.1s; }
+        .city-card:nth-child(2) { animation-delay: 0.2s; }
+        .city-card:nth-child(3) { animation-delay: 0.3s; }
+        .city-card:nth-child(4) { animation-delay: 0.4s; }
+        .city-card:nth-child(5) { animation-delay: 0.5s; }
+        .city-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .city-card:nth-child(odd) .card-wrapper {
+            margin-left: 0;
+            margin-right: 52%;
+            text-align: right;
+        }
+
+        .city-card:nth-child(even) .card-wrapper {
+            margin-left: 52%;
+            margin-right: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 2rem;
+            z-index: 3;
+            box-shadow: 0 0 0 8px rgba(108, 92, 231, 0.15);
+        }
+
+        .card-wrapper {
+            position: relative;
+        }
+
+        .card-content {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .card-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .city-card:nth-child(2) .card-content { border-left-color: #FF6B8A; }
+        .city-card:nth-child(3) .card-content { border-left-color: #00B894; }
+        .city-card:nth-child(4) .card-content { border-left-color: #0984E3; }
+        .city-card:nth-child(5) .card-content { border-left-color: #D63031; }
+        .city-card:nth-child(6) .card-content { border-left-color: #FDCB6E; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .city-flag-svg {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+            border: 2px solid rgba(108, 92, 231, 0.2);
+        }
+
+        .city-info h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .city-dates {
+            font-size: 0.95rem;
+            color: #636E72;
+            font-weight: 500;
+        }
+
+        .highlight-bar {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .card-details {
+            display: none;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #ECF0F1;
+        }
+
+        .card-details.active {
+            display: block;
+        }
+
+        .detail-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-box {
+            background: #F5F6FA;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+            line-height: 1.8;
+        }
+
+        .toggle-text {
+            color: #636E72;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.25rem;
+            border: 1px solid rgba(108, 92, 231, 0.3);
+        }
+
+        .confirmed-badge {
+            background: rgba(0, 184, 148, 0.1);
+            color: #00B894;
+            border-color: rgba(0, 184, 148, 0.3);
+        }
+
+        .new-badge {
+            background: rgba(253, 203, 110, 0.1);
+            color: #D63031;
+            border-color: rgba(214, 48, 49, 0.3);
+            font-weight: 700;
+        }
+
+        .footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .footer h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-stat {
+            padding: 1rem;
+            background: #F5F6FA;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .footer-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .footer-stat-label {
+            font-size: 0.85rem;
+            color: #636E72;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+
+            .city-card:nth-child(odd) .card-wrapper,
+            .city-card:nth-child(even) .card-wrapper {
+                margin-left: 50px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            .stat {
+                padding: 0.75rem 1rem;
+            }
+
+            .card-header {
+                gap: 1rem;
+            }
+
+            .city-flag-svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            .city-info h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✈️ ROTEIRO EUROPA 2026</h1>
+            <p class="subtitle">Uma jornada inesquecível por Dublin, Belfast, Escócia, Liverpool e Londres</p>
+            <span class="update-badge">✨ FINAL: Bandeiras em SVG (100% Renderizado)</span>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Dias</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Cidades</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Memórias</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="timeline">
+            <!-- Dublin Ida -->
+            <div class="city-card">
+                <div class="timeline-dot"></div>
+                <div class="card-wrapper">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <svg class="city-flag-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="300" height="600" fill="#169B62"/>
+                                <rect x="300" width="300" height="600" fill="white"/>
+                                <rect x="600" width="300" height="600" fill="#FF883E"/>
+                            </svg>
+                            <div class="city-info">
+                                <h2>Dublin</h2>
+                                <div class="city-dates">28/08 (sex) a 31/08 (seg) • 3 noites</div>
+                            </div>
+                        </div>
+                        <div class="highlight-bar">✈️ Chegada | 🎸 Show Bon Jovi (30/08) | 🌊 Bate-volta Galway</div>
+                        <div class="toggle-text">Clique para expandir ▼</div>
+                        <div class="card-details">
+                            <div class="detail-section">
+                                <div class="detail-label">🏨 Hotel Confirmado</div>
+                                <div class="detail-box">
+                                    <strong>Trinity Townhouse Hotel</strong><br>
+                                    <span style="color: #636E72; font-size: 0.9rem;">Localização perfeita perto de Trinity College e St Stephen's Green</span>
+                                </div>
+                                <span class="badge confirmed-badge">✓ CONFIRMADO</span>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">📍 Bairro Recomendado</div>
+                                <div class="detail-box">
+                                    <strong>City Center / Temple Bar</strong><br>
+                                    ✅ Seguro e turístico<br>
+                                    ✅ Caminhável para tudo<br>
+                                    ✅ Muitos restaurantes e bares
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">📅 Itinerário</div>
+                                <div class="detail-box">
+                                    <strong>Dia 28 (sex):</strong> ✈️ Chegada e descanso<br>
+                                    <strong>Dia 29 (sab):</strong> 🚌 Galway + Cliffs of Moher (8h-21h)<br>
+                                    <strong>Dia 30 (dom):</strong> Descanso + 🎸 Bon Jovi à noite<br>
+                                    <strong>Dia 31 (seg):</strong> Trinity, St Stephen's, Guinness
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">🌊 Bate-volta Galway + Cliffs of Moher</div>
+                                <div class="detail-box">
+                                    Saem: 8h | Voltam: 21h<br>
+                                    Custo: €60-80 (tour agenciado)<br>
+                                    ⭐ As falésias mais famosas da Irlanda!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Belfast -->
+            <div class="city-card">
+                <div class="timeline-dot"></div>
+                <div class="card-wrapper">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <svg class="city-flag-svg" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="60" height="30" fill="#012169"/>
+                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="white" stroke-width="6"/>
+                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4" stroke-dasharray="1"/>
+                                <rect y="12" width="60" height="6" fill="white"/>
+                                <rect x="24" width="12" height="30" fill="white"/>
+                                <rect y="12" width="60" height="3" fill="#C8102E"/>
+                                <rect x="27" width="6" height="30" fill="#C8102E"/>
+                            </svg>
+                            <div class="city-info">
+                                <h2>Belfast</h2>
+                                <div class="city-dates">31/08 (seg) a 01/09 (ter) • 1 noite</div>
+                            </div>
+                        </div>
+                        <div class="highlight-bar">🚂 Trem 2h 10m | 🎭 Titanic + 🪨 Giant's Causeway</div>
+                        <div class="toggle-text">Clique para expandir ▼</div>
+                        <div class="card-details">
+                            <div class="detail-section">
+                                <div class="detail-label">🏨 Hotel Confirmado</div>
+                                <div class="detail-box">
+                                    <strong>The Flint Hotel</strong><br>
+                                    <span style="color: #636E72; font-size: 0.9rem;">Centro da cidade, perfeito para explorar</span>
+                                </div>
+                                <span class="badge confirmed-badge">✓ CONFIRMADO</span>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">🎭 Imperdível</div>
+                                <div class="detail-box">
+                                    <strong>Titanic Belfast</strong> - Museu impressionante<br>
+                                    (Manhã - 2-3 horas)
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">🪨 NEW! Giant's Causeway</div>
+                                <div class="detail-box">
+                                    <strong>Formação rochosa UNESCO</strong><br>
+                                    ✨ Mais famosa que Titanic!<br>
+                                    📍 1h de Belfast (taxi ou tour)<br>
+                                    📸 Super fotogênico - falésias gigantes naturais
+                                </div>
+                                <span class="badge new-badge">⭐ NOVO!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edinburgh -->
+            <div class="city-card">
+                <div class="timeline-dot"></div>
+                <div class="card-wrapper">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <svg class="city-flag-svg" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="150" height="100" fill="#003399"/>
+                                <path d="M0,0 L150,100 M150,0 L0,100" stroke="white" stroke-width="20"/>
+                            </svg>
+                            <div class="city-info">
+                                <h2>Edinburgh</h2>
+                                <div class="city-dates">01/09 (ter) a 04/09 (sex) • 3 noites</div>
+                            </div>
+                        </div>
+                        <div class="highlight-bar">✈️ Voo 1h | 🏰 Castle Icônico</div>
+                        <div class="toggle-text">Clique para expandir ▼</div>
+                        <div class="card-details">
+                            <div class="detail-section">
+                                <div class="detail-label">📍 Bairro Recomendado</div>
+                                <div class="detail-box">
+                                    <strong>Old Town</strong><br>
+                                    💰 €80-110/noite (hotel)<br>
+                                    ✅ Histórico e fotogênico
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">⭐ Destaques</div>
+                                <div class="detail-box">
+                                    🏰 Edinburgh Castle<br>
+                                    🛣️ Royal Mile<br>
+                                    🌄 Calton Hill (vista incrível)
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">📝 Nota</div>
+                                <div class="detail-box">
+                                    Agora com 3 noites - muito melhor pra explorar! 🎉
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liverpool -->
+            <div class="city-card">
+                <div class="timeline-dot"></div>
+                <div class="card-wrapper">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <svg class="city-flag-svg" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="150" height="100" fill="white"/>
+                                <rect y="40" width="150" height="20" fill="#C8102E"/>
+                                <rect x="60" width="30" height="100" fill="#C8102E"/>
+                            </svg>
+                            <div class="city-info">
+                                <h2>Liverpool</h2>
+                                <div class="city-dates">04/09 (sex) a 07/09 (seg) • 3 noites</div>
+                            </div>
+                        </div>
+                        <div class="highlight-bar">🚂 Trem direto 4h30m | 🎸 The Beatles Story</div>
+                        <div class="toggle-text">Clique para expandir ▼</div>
+                        <div class="card-details">
+                            <div class="detail-section">
+                                <div class="detail-label">📍 Bairro Recomendado</div>
+                                <div class="detail-box">
+                                    <strong>Waterfront / Albert Dock</strong><br>
+                                    💰 €70-100/noite<br>
+                                    ✅ Pitoresco e iconic
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">⭐ Destaques</div>
+                                <div class="detail-box">
+                                    🎸 The Beatles Story<br>
+                                    🏛️ Albert Dock<br>
+                                    🎵 Cavern Quarter
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Londres -->
+            <div class="city-card">
+                <div class="timeline-dot"></div>
+                <div class="card-wrapper">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <svg class="city-flag-svg" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="150" height="100" fill="white"/>
+                                <rect y="40" width="150" height="20" fill="#C8102E"/>
+                                <rect x="60" width="30" height="100" fill="#C8102E"/>
+                            </svg>
+                            <div class="city-info">
+                                <h2>Londres</h2>
+                                <div class="city-dates">07/09 (seg) a 09/09 (qua) • 2 noites</div>
+                            </div>
+                        </div>
+                        <div class="highlight-bar">🚂 Trem 2h 15m | ✨ Magic Mike Live 20h</div>
+                        <div class="toggle-text">Clique para expandir ▼</div>
+                        <div class="card-details">
+                            <div class="detail-section">
+                                <div class="detail-label">🏘️ Bairro Recomendado</div>
+                                <div class="detail-box">
+                                    <strong>Leicester Square / Covent Garden</strong><br>
+                                    ✅ Magic Mike a 2 min a pé!<br>
+                                    💰 €100-150/noite
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">✨ O Destaque</div>
+                                <div class="detail-box">
+                                    <strong>Magic Mike Live</strong><br>
+                                    🎭 90 minutos de puro show<br>
+                                    💳 Bilhetes: £49+<br>
+                                    📸 Fotos turísticas + Covent Garden
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">📝 Nota</div>
+                                <div class="detail-box">
+                                    Agora com 2 noites - muito mais tempo! 🎉
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dublin Volta -->
+            <div class="city-card">
+                <div class="timeline-dot"></div>
+                <div class="card-wrapper">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <svg class="city-flag-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="300" height="600" fill="#169B62"/>
+                                <rect x="300" width="300" height="600" fill="white"/>
+                                <rect x="600" width="300" height="600" fill="#FF883E"/>
+                            </svg>
+                            <div class="city-info">
+                                <h2>Dublin</h2>
+                                <div class="city-dates">09/09 (qua) a 14/09 (seg) • 5 noites</div>
+                            </div>
+                        </div>
+                        <div class="highlight-bar">✈️ Voo 1h 20m | 🏛️ Newgrange + Kilmainham</div>
+                        <div class="toggle-text">Clique para expandir ▼</div>
+                        <div class="card-details">
+                            <div class="detail-section">
+                                <div class="detail-label">📍 Bairro Recomendado</div>
+                                <div class="detail-box">
+                                    <strong>Southside (Grafton Street)</strong><br>
+                                    💰 €80-120/noite<br>
+                                    ✅ Shopping e descanso
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">🏛️ NEW! Bate-volta Newgrange</div>
+                                <div class="detail-box">
+                                    <strong>Monumento pré-histórico de 5.000 ANOS!</strong><br>
+                                    ✨ Mais antigo que Stonehenge<br>
+                                    🎫 UNESCO World Heritage<br>
+                                    📍 1h de Dublin<br>
+                                    📸 Incrivelmente fotogênico - vale MUITO a pena!
+                                </div>
+                                <span class="badge new-badge">⭐ NOVO!</span>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">🏰 NEW! Kilmainham Gaol</div>
+                                <div class="detail-box">
+                                    <strong>Prisão histórica da Independência da Irlanda</strong><br>
+                                    📍 Em Dublin (sem desvio)<br>
+                                    ⏱️ 1-2 horas de tour<br>
+                                    📚 História fascinante da Irlanda
+                                </div>
+                                <span class="badge new-badge">⭐ NOVO!</span>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-label">🎯 Resto das Atividades</div>
+                                <div class="detail-box">
+                                    🛍️ Compras em Grafton Street<br>
+                                    🌳 Phoenix Park<br>
+                                    ☕ Cafés e restaurantes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>📊 Resumo da Aventura (100% PRONTO!)</h3>
+            <div class="footer-stats">
+                <div class="footer-stat">
+                    <div class="footer-stat-number">18</div>
+                    <div class="footer-stat-label">Dias Mágicos</div>
+                </div>
+                <div class="footer-stat">
+                    <div class="footer-stat-number">6</div>
+                    <div class="footer-stat-label">Cidades</div>
+                </div>
+                <div class="footer-stat">
+                    <div class="footer-stat-number">5</div>
+                    <div class="footer-stat-label">Trechos</div>
+                </div>
+                <div class="footer-stat">
+                    <div class="footer-stat-number">2</div>
+                    <div class="footer-stat-label">Amigas</div>
+                </div>
+            </div>
+            <p style="color: #636E72; line-height: 1.8;">
+                ✅ Hospedagens Confirmadas: Trinity Townhouse + The Flint Hotel<br>
+                🌟 DESTAQUES: Giant's Causeway (UNESCO) • Newgrange (5.000 anos) • Kilmainham (História) • Magic Mike<br>
+                🎯 Distribuição: Dublin 3 • Belfast 1 • Edinburgh 3 • Liverpool 3 • Londres 2 • Dublin 5<br>
+                <strong style="color: var(--primary);">ROTEIRO 100% FINALIZADO E PRONTO! 🚀✈️</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.card-content').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('expanded');
+                const details = this.querySelector('.card-details');
+                if (details) {
+                    details.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
