@@ -45,7 +45,7 @@ export default async function ItineraryPage() {
         {/* Timeline */}
         <div className="timeline" style={{ position: 'relative' }}>
           {cities.map((city, i) => (
-            <CityCard key={city.id} city={city} index={i} />
+            <CityCard key={city.id} city={city} index={i} accentVar={`--c${(i % 6) + 1}`} />
           ))}
         </div>
       </div>
