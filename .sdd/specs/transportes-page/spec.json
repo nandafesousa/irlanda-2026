@@ -1,0 +1,29 @@
+{
+  "feature_name": "transportes-page",
+  "created_at": "2026-06-10T00:00:00.000Z",
+  "updated_at": "2026-06-10T21:40:00.000Z",
+  "validation": {
+    "validated": true,
+    "validated_at": "2026-06-10T21:40:00.000Z",
+    "decision": "GO",
+    "tests_passed": 270,
+    "test_files": 21
+  },
+  "language": "Pt-BR",
+  "phase": "validated",
+  "approvals": {
+    "requirements": {
+      "generated": true,
+      "approved": true
+    },
+    "design": {
+      "generated": true,
+      "approved": true
+    },
+    "tasks": {
+      "generated": true,
+      "approved": true
+    }
+  },
+  "ready_for_implementation": true
+}
