@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Timeline completa da viagem — cidades, datas, destaques e atividades.',
 };
 
-export function deriveAccentVar(index: number): string {
+function deriveAccentVar(index: number): string {
   return `--c${(index % 6) + 1}`;
 }
 
