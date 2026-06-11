@@ -14,7 +14,7 @@ vi.mock('@/components/CityCard', () => ({
   default: () => null,
 }));
 
-import { deriveAccentVar } from './page';
+import { deriveAccentVar } from '@/lib/accent';
 
 describe('deriveAccentVar (task 1.1)', () => {
   it('retorna --c1 para índice 0', () => {

@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
 import { getRoteiro } from '@/lib/sheets';
 import CityCard from '@/components/CityCard';
+import { deriveAccentVar } from '@/lib/accent';
 
 export const metadata: Metadata = {
   title: 'Roteiro | Irlanda & UK 2026',
   description: 'Timeline completa da viagem — cidades, datas, destaques e atividades.',
 };
 
-function deriveAccentVar(index: number): string {
-  return `--c${(index % 6) + 1}`;
-}
 
 export default async function RoteiroPage(): Promise<React.JSX.Element> {
   const cities = await getRoteiro();

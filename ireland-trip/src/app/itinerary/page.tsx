@@ -1,5 +1,6 @@
 import { getRoteiro } from '@/lib/sheets';
 import CityCard from '@/components/CityCard';
+import { deriveAccentVar } from '@/lib/accent';
 
 export default async function ItineraryPage() {
   const cities = await getRoteiro();
@@ -45,7 +46,7 @@ export default async function ItineraryPage() {
         {/* Timeline */}
         <div className="timeline" style={{ position: 'relative' }}>
           {cities.map((city, i) => (
-            <CityCard key={city.id} city={city} index={i} accentVar={`--c${(i % 6) + 1}`} />
+            <CityCard key={city.id} city={city} index={i} accentVar={deriveAccentVar(i)} />
           ))}
         </div>
       </div>
